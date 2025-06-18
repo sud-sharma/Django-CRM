@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="col-md-6 offset-md-3">
+  <h1 class="text-center">Customer Record</h1>
+  <br />
+
+  <div class="card">
+    <div class="card-header">
+      <h4>{{ record.first_name }} {{ record.last_name }}</h4>
+    </div>
+    <div class="card-body">
+      <p class="card-text">Email: {{ record.email }}</p>
+      <p class="card-text">Phone: {{ record.phone }}</p>
+      <p class="card-text">Address: {{ record.address }}</p>
+      <p class="card-text">Created At: {{ record.created_at }}</p>
+      <p class="card-text">Updated At: {{ record.updated_at }}</p>
+      <a href="{% url 'home' %}" class="btn btn-secondary">Back to List</a>
+      <a href="{% url 'edit_record' record.id %}" class="btn btn-info">Edit Record</a>
+      <a href="#" id="delete_btn" class="btn btn-danger">Delete Record</a>
+      <form id="delete-form" method="POST" action="{% url 'delete_record' record.id %}" style="display:inline;">
+        {% csrf_token %}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Add any JavaScript functionality here if needed
+    const deleteButton = document.querySelector('#delete_btn');
+    if (deleteButton) {
+      deleteButton.addEventListener('click', function(event) {
+        event.preventDefault();
+        if (confirm('Are you sure you want to delete this record?')) {
+          document.querySelector('#delete-form').submit();
+        }
+      });
+    }
+  });
+</script>
+{% endblock %}
