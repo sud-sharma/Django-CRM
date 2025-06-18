@@ -1,4 +1,4 @@
-# Django CEM - Customer Entry Management
+# Django CRM - Customer Relationship Management
 
 A simple Django project to **Add**, **Update**, **Delete**, and **View** customer information using **MySQL** as the database backend.
 
