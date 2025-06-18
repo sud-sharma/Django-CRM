@@ -22,5 +22,3 @@ A simple Django project to **Add**, **Update**, **Delete**, and **View** custome
 
 ---
 
-## 📁 Project Structure
-
